@@ -2,13 +2,11 @@ import React from 'react';
 import '../../SCSS/main.scss';
 
 const Button = (props) => {
+  const { type, className, onClick, name } = props;
   return (
     <div>
-      <button
-        className={props.className}
-        type={props.type}
-        onClick={props.clickHandler}>
-        {props.name}
+      <button className={className} type={type} onClick={onClick}>
+        {name}
       </button>
     </div>
   );

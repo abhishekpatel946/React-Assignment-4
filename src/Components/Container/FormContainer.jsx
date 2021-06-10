@@ -18,17 +18,62 @@ const FormContainer = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   // change handler for states
-  const changeHandler = (e) => {
+  const changeHandlerName = (e) => {
     setName(e.target.value);
+  };
+  const changeHandlerEmail = (e) => {
     setEmail(e.target.value);
+  };
+  const changeHandlerDoB = (e) => {
+    setDateOfBirth(e);
+  };
+  const changeHandlerGender = (e) => {
+    setGender(e.target.value);
+  };
+  const changeHandlerEdu = (e) => {
+    setEducation(e.target.value);
+  };
+  const changeHandlerPass = (e) => {
     setPassword(e.target.value);
+  };
+  const changeHandlerCpass = (e) => {
     setConfirmPassword(e.target.value);
   };
 
   // click handler for validation
   const clickHandler = (e) => {
-    console.log(name);
-    console.log(e.target.value);
+    // validate the form
+    if (!name) {
+      alert('Name is mandatory!');
+    }
+    if (!email) {
+      alert('Email is mandatory');
+    } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      alert('Email is incorrect!');
+    }
+    if (!dateOfBirth) {
+      alert('DateOfBirth is mandatory!');
+    } else if (true) {
+      // check for date < todays date
+      // dob is always correct
+      // alert for 18 adult
+    }
+    if (!gender) {
+      alert('Gender is mandatory!');
+    }
+    if (!education) {
+      alert('Education is mandatory!');
+    }
+    if (!password) {
+      alert('Password is mandatory');
+    } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
+      alert('Please choose a strong password!');
+    }
+    if (!confirmPassword) {
+      alert('Confirm-Password is mandatory!');
+    } else if (confirmPassword !== password) {
+      alert("Password's are not matched!");
+    }
 
     // reset the state
     setName('');
@@ -50,7 +95,7 @@ const FormContainer = () => {
           type={'text'}
           name={'Name'}
           placeholder={'Enter your name'}
-          onChange={changeHandler}
+          onChange={changeHandlerName}
           value={name}
         />
       </div>
@@ -63,7 +108,7 @@ const FormContainer = () => {
           type={'email'}
           name={'Email'}
           placeholder={'Enter your email'}
-          onChange={changeHandler}
+          onChange={changeHandlerEmail}
           value={email}
         />
       </div>
@@ -72,14 +117,18 @@ const FormContainer = () => {
         <Label className={'Label'} name={'Date Of Birth'} />
       </div>
       <div className='container-element'>
-        <DatePicker onChange={changeHandler} dateOfBirth={dateOfBirth} />
+        <DatePicker onChange={changeHandlerDoB} dateOfBirth={dateOfBirth} />
       </div>
 
       <div className='container-heading'>
-        <Label className={'Label'} name={'Gender'} />
+        <Label className={'Label'} />
       </div>
       <div className='container-element'>
-        <RadioButton onChange={changeHandler} />
+        <RadioButton
+          name={'Gender'}
+          value={gender}
+          onChange={changeHandlerGender}
+        />
       </div>
 
       <div className='container-heading'>
@@ -94,9 +143,9 @@ const FormContainer = () => {
       </div>
       <div className='container-element'>
         <SelectOption
-          name={'select'}
+          name='Education'
           value={education}
-          onChange={changeHandler}
+          onChange={changeHandlerEdu}
         />
       </div>
 
@@ -108,7 +157,7 @@ const FormContainer = () => {
           type={'password'}
           name={'Password'}
           placeholder={'Enter your password'}
-          onChange={changeHandler}
+          onChange={changeHandlerPass}
           value={password}
         />
       </div>
@@ -121,7 +170,7 @@ const FormContainer = () => {
           type={'password'}
           name={'RePassword'}
           placeholder={'Re enter your password'}
-          onChange={changeHandler}
+          onChange={changeHandlerCpass}
           value={confirmPassword}
         />
       </div>

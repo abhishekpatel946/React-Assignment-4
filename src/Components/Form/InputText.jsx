@@ -2,15 +2,17 @@ import React from 'react';
 import '../../SCSS/main.scss';
 
 const InputText = (props) => {
+  const { type, value, name, placeholder, onChange } = props;
+
   return (
     <div className='InputText'>
       <input
         className='Input-name'
-        type={props.type}
-        // value={props.value}
-        name={props.name}
-        placeholder={props.placeholder}
-        onChange={props.changeHandler}
+        type={type}
+        value={value}
+        name={name}
+        placeholder={placeholder}
+        onChange={onChange}
       />
     </div>
   );

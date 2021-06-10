@@ -2,30 +2,31 @@ import React from 'react';
 import '../../SCSS/main.scss';
 
 const RadioButton = (props) => {
+  const { name, value, onChange } = props;
   return (
     <div className='Radio-button'>
       <input
         className='Radio-input'
         type='radio'
         value='Male'
-        name='Gender'
-        onChange={props.changeHandler}
+        name={name}
+        onChange={onChange}
       />
       <span className='Radio-text'>Male</span>
       <input
         className='Radio-input'
         type='radio'
         value='Female'
-        name='Gender'
-        onChange={props.changeHandler}
+        name={name}
+        onChange={onChange}
       />
       <span className='Radio-text'>Female</span>
       <input
         className='Radio-input'
         type='radio'
-        value='Other'
-        name='Gender'
-        onChange={props.changeHandler}
+        value='Others'
+        name={name}
+        onChange={onChange}
       />
       <span className='Radio-text'>Other</span>
     </div>
