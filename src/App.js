@@ -1,6 +1,6 @@
 import Header from './Components/Header/Header';
 import FormLayout from './Components/Container/FormContainer';
-import './App.scss';
+import './SCSS/main.scss';
 
 function App() {
   return (

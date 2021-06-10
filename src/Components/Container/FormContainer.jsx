@@ -5,6 +5,7 @@ import InputText from '../Form/InputText';
 import Label from '../Form/Label';
 import RadioButton from '../Form/RadioButton';
 import SelectOption from '../Form/SelectOption';
+import '../../SCSS/main.scss';
 
 const FormContainer = () => {
   // state for containing data
@@ -40,69 +41,96 @@ const FormContainer = () => {
   };
 
   return (
-    <div>
-      <Label className={'Label'} name={'Name'} />
-      <InputText
-        className={'Input-name'}
-        type={'text'}
-        name={'Name'}
-        placeholder={'Enter your name'}
-        onChange={changeHandler}
-        value={name}
-      />
+    <div className='Form-container'>
+      <div className='container-heading'>
+        <Label name={'Name'} />
+      </div>
+      <div className='container-element'>
+        <InputText
+          type={'text'}
+          name={'Name'}
+          placeholder={'Enter your name'}
+          onChange={changeHandler}
+          value={name}
+        />
+      </div>
 
-      <Label className={'Label'} name={'Email'} />
-      <InputText
-        className={'Input-email'}
-        type={'email'}
-        name={'Email'}
-        placeholder={'Enter your email'}
-        onChange={changeHandler}
-        value={email}
-      />
+      <div className='container-heading'>
+        <Label className={'Label'} name={'Email'} />
+      </div>
+      <div className='container-element'>
+        <InputText
+          type={'email'}
+          name={'Email'}
+          placeholder={'Enter your email'}
+          onChange={changeHandler}
+          value={email}
+        />
+      </div>
 
-      <Label className={'Label'} name={'Date Of Birth'} />
-      <DatePicker onChange={changeHandler} dateOfBirth={dateOfBirth} />
+      <div className='container-heading'>
+        <Label className={'Label'} name={'Date Of Birth'} />
+      </div>
+      <div className='container-element'>
+        <DatePicker onChange={changeHandler} dateOfBirth={dateOfBirth} />
+      </div>
 
-      <Label className={'Label'} name={'Gender'} />
-      <RadioButton onChange={changeHandler} />
+      <div className='container-heading'>
+        <Label className={'Label'} name={'Gender'} />
+      </div>
+      <div className='container-element'>
+        <RadioButton onChange={changeHandler} />
+      </div>
 
-      <Label className={'Label'} name={'Profile Pic'} />
-      <InputText className={'Input-file'} type={'file'} />
+      <div className='container-heading'>
+        <Label className={'Label'} name={'Profile Pic'} />
+      </div>
+      <div className='container-element'>
+        <InputText className={'Input-file'} type={'file'} />
+      </div>
 
-      <Label className={'Label'} name={'Level of Education'} />
-      <SelectOption
-        name={'select'}
-        value={education}
-        onChange={changeHandler}
-      />
+      <div className='container-heading'>
+        <Label className={'Label'} name={'Level of Education'} />
+      </div>
+      <div className='container-element'>
+        <SelectOption
+          name={'select'}
+          value={education}
+          onChange={changeHandler}
+        />
+      </div>
 
-      <Label className={'Label'} name={'Password'} />
-      <InputText
-        className={'Input-password'}
-        type={'password'}
-        name={'Password'}
-        placeholder={'Enter your password'}
-        onChange={changeHandler}
-        value={password}
-      />
+      <div className='container-heading'>
+        <Label className={'Label'} name={'Password'} />
+      </div>
+      <div className='container-element'>
+        <InputText
+          type={'password'}
+          name={'Password'}
+          placeholder={'Enter your password'}
+          onChange={changeHandler}
+          value={password}
+        />
+      </div>
 
-      <Label className={'Label'} name={'Confirm Password'} />
-      <InputText
-        className={'Input-re-password'}
-        type={'password'}
-        name={'RePassword'}
-        placeholder={'Re enter your password'}
-        onChange={changeHandler}
-        value={confirmPassword}
-      />
+      <div className='container-heading'>
+        <Label className={'Label'} name={'Confirm Password'} />
+      </div>
+      <div className='container-element'>
+        <InputText
+          type={'password'}
+          name={'RePassword'}
+          placeholder={'Re enter your password'}
+          onChange={changeHandler}
+          value={confirmPassword}
+        />
+      </div>
       <Button
         className={'Button'}
         type={'submit'}
         name={'Submit'}
         onClick={clickHandler}
       />
-      <div style={{ marginBottom: '40px' }}></div>
     </div>
   );
 };

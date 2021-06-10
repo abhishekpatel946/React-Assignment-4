@@ -1,11 +1,12 @@
 import React from 'react';
+import '../../SCSS/main.scss';
 
 const SelectOptions = (props) => {
   return (
     <div className='Options'>
       <form>
         <select
-          className='Option-select'
+          className='Input-name'
           name={props.name}
           value={props.education}
           onChange={props.changeHandler}>

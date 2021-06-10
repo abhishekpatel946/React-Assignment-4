@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../../SCSS/main.scss';
 
 const Label = (props) => {
   // typechecking with propTypes
@@ -9,7 +10,7 @@ const Label = (props) => {
 
   return (
     <div>
-      <h3 className={props.classname}>{props.name}</h3>
+      <h3 className='Label'>{props.name}</h3>
     </div>
   );
 };

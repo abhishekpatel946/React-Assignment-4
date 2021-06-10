@@ -1,10 +1,11 @@
 import React from 'react';
+import '../../SCSS/main.scss';
 
 const InputText = (props) => {
   return (
     <div className='InputText'>
       <input
-        className={props.className}
+        className='Input-name'
         type={props.type}
         // value={props.value}
         name={props.name}
