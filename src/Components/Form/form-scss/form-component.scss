@@ -1,0 +1,59 @@
+@import '../../../SCSS/colorStack';
+
+//---------------- Form-components ----------------//
+
+.Label {
+  font-size: 25px;
+  font-weight: 300;
+  color: $darkGrey;
+}
+
+.Input-name {
+  height: 40px;
+  width: 310px;
+  color: $black;
+  font-size: 15px;
+  border: 1px solid $darkGrey;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.Password-container {
+  display: flex;
+  justify-content: center;
+  .Password-bar {
+    width: 310px;
+  }
+}
+
+.Radio-button {
+  .Radio-text {
+    font-size: 20px;
+    color: $darkGrey;
+  }
+  .Radio-input {
+    height: 20px;
+    width: 30px;
+    color: $black;
+    font-size: 15px;
+    border: 1px solid $darkGrey;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+}
+
+.Button {
+  height: 40px;
+  width: 310px;
+  color: $white;
+  font-size: 20px;
+  background-color: $green;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  &:hover {
+    background-color: green;
+  }
+}

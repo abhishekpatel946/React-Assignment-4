@@ -1,8 +1,16 @@
 import React from 'react';
-import '../../SCSS/main.scss';
+import PropTypes from 'prop-types';
+import './form-scss/form-component.scss';
 
 const RadioButton = (props) => {
-  const { name, value, onChange } = props;
+  // typechecking with propTypes
+  RadioButton.propTypes = {
+    name: PropTypes.string,
+  };
+
+  // destructring props
+  const { name, onChange } = props;
+
   return (
     <div className='Radio-button'>
       <input

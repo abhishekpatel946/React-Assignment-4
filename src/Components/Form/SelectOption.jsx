@@ -1,8 +1,17 @@
 import React from 'react';
-import '../../SCSS/main.scss';
+import PropTypes from 'prop-types';
+import './form-scss/form-component.scss';
 
 const SelectOptions = (props) => {
+  // typechecking with propTypes
+  SelectOptions.propTypes = {
+    name: PropTypes.string,
+    type: PropTypes.string,
+  };
+
+  // destructring props
   const { name, value, onChange } = props;
+
   return (
     <div className='Options'>
       <select

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../../SCSS/main.scss';
+import './form-scss/form-component.scss';
 
 const Label = (props) => {
   // typechecking with propTypes
