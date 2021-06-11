@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import './form-scss/form-component.scss';
 
 const Label = (props) => {
-  // typechecking with propTypes
-  Label.propTypes = {
-    name: PropTypes.string,
-  };
+  // destructring props
+  const { name, className } = props;
 
-  return (
-    <div>
-      <h3 className='Label'>{props.name}</h3>
-    </div>
-  );
+  return <h3 className={className}>{name}</h3>;
+};
+
+// typechecking with propTypes
+Label.propTypes = {
+  name: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Label;

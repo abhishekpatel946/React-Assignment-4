@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 import './form-scss/form-component.scss';
 
 const PassStrengthBar = (props) => {
-  // typechecking with propTypes
-  PassStrengthBar.propTypes = {
-    password: PropTypes.string,
-  };
-
   // destructring props
   const { password } = props;
 
   return (
-    <div className='Password-container'>
-      <PasswordStrengthBar className='Password-bar' password={password} />
+    <div className='password-container'>
+      <PasswordStrengthBar className='password-bar' password={password} />
     </div>
   );
+};
+
+// typechecking with propTypes
+PassStrengthBar.propTypes = {
+  password: PropTypes.string,
 };
 
 export default PassStrengthBar;

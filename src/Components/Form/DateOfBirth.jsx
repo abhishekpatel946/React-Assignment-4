@@ -5,21 +5,21 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './form-scss/form-component.scss';
 
 const DateOfBirth = (props) => {
-  // typechecking with propTypes
-  DateOfBirth.propTypes = {
-    className: PropTypes.string,
-  };
-
   // destructring props
   const { dateOfBirth, onChange } = props;
   return (
     <DatePicker
-      className='Input-name Date-picker'
+      className='input-name date-picker'
       selected={dateOfBirth}
-      // value={dateOfBirth}
       onChange={onChange}
     />
   );
+};
+
+// typechecking with propTypes
+DateOfBirth.propTypes = {
+  className: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 export default DateOfBirth;

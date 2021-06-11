@@ -2,13 +2,13 @@
 
 //---------------- Form-components ----------------//
 
-.Label {
+.label {
   font-size: 25px;
   font-weight: 300;
   color: $darkGrey;
 }
 
-.Input-name {
+.input-name {
   height: 40px;
   width: 310px;
   color: $black;
@@ -18,20 +18,20 @@
   border-radius: 5px;
 }
 
-.Password-container {
+.password-container {
   display: flex;
   justify-content: center;
-  .Password-bar {
+  .password-bar {
     width: 310px;
   }
 }
 
-.Radio-button {
-  .Radio-text {
+.radio-button {
+  .radio-text {
     font-size: 20px;
     color: $darkGrey;
   }
-  .Radio-input {
+  .radio-input {
     height: 20px;
     width: 30px;
     color: $black;
@@ -42,7 +42,7 @@
   }
 }
 
-.Button {
+.button {
   height: 40px;
   width: 310px;
   color: $white;

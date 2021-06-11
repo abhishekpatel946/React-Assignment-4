@@ -3,42 +3,32 @@ import PropTypes from 'prop-types';
 import './form-scss/form-component.scss';
 
 const RadioButton = (props) => {
-  // typechecking with propTypes
-  RadioButton.propTypes = {
-    name: PropTypes.string,
-  };
-
   // destructring props
-  const { name, onChange } = props;
+  const { onChange, className, options } = props;
 
   return (
-    <div className='Radio-button'>
-      <input
-        className='Radio-input'
-        type='radio'
-        value='Male'
-        name={name}
-        onChange={onChange}
-      />
-      <span className='Radio-text'>Male</span>
-      <input
-        className='Radio-input'
-        type='radio'
-        value='Female'
-        name={name}
-        onChange={onChange}
-      />
-      <span className='Radio-text'>Female</span>
-      <input
-        className='Radio-input'
-        type='radio'
-        value='Others'
-        name={name}
-        onChange={onChange}
-      />
-      <span className='Radio-text'>Other</span>
+    <div className='radio-button'>
+      {options.map((item) => (
+        <span key={item.title} className='radio-text'>
+          <input
+            key={item.title}
+            className={className}
+            type='radio'
+            value={item.title}
+            name={item.id}
+            onChange={onChange}
+          />
+          {item.title}
+        </span>
+      ))}
     </div>
   );
+};
+// typechecking with propTypes
+RadioButton.propTypes = {
+  onChange: PropTypes.func,
+  className: PropTypes.string,
+  options: PropTypes.array,
 };
 
 export default RadioButton;
