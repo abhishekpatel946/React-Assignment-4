@@ -1,5 +1,6 @@
 import React, { useReducer, useState } from 'react';
 import Button from '../Form/Button';
+import Container from '@material-ui/core/Container';
 import DatePicker from '../Form/DateOfBirth';
 import InputText from '../Form/InputText';
 import Label from '../Form/Label';
@@ -26,9 +27,6 @@ const FormContainer = () => {
   // onSubmission validation
   const handleSubmit = (event) => {
     event.preventDafault();
-
-    localStorage.setItem('userData', JSON.stringify(formData));
-
     setTimeout(() => {
       setFormData({
         name: '',
@@ -67,79 +65,86 @@ const FormContainer = () => {
 
   return (
     <div>
-      <div className='form-container'>
-        <form onSubmit={handleSubmit}>
-          <Label className={'label'} name={'Name'} />
-          <InputText
-            type={'text'}
-            name={'Name'}
-            placeholder={'Enter your name'}
-            onChange={handleChange}
-          />
+      <Container maxWidth='sm'>
+        <div className='form-container'>
+          <form onSubmit={handleSubmit}>
+            <Label className={'label'} name={'Name'} />
+            <InputText
+              type={'text'}
+              name={'Name'}
+              placeholder={'Enter your name'}
+              onChange={handleChange}
+            />
 
-          <Label className={'label'} name={'Email'} />
-          <InputText
-            type={'email'}
-            name={'Email'}
-            placeholder={'Enter your email'}
-            onChange={handleChange}
-          />
+            <Label className={'label'} name={'Email'} />
+            <InputText
+              type={'email'}
+              name={'Email'}
+              placeholder={'Enter your email'}
+              onChange={handleChange}
+            />
 
-          <Label className={'label'} name={'Date Of Birth'} />
-          <DatePicker name={'DateOfBirth'} onChange={handleChange} />
+            <Label className={'label'} name={'Date Of Birth'} />
+            <DatePicker name={'DateOfBirth'} onChange={handleChange} />
 
-          <Label className={'label'} />
-          <RadioButton
-            className={'radio-input'}
-            options={genderOptions}
-            onChange={handleChange}
-          />
+            <Label className={'label'} />
+            <RadioButton
+              className={'radio-input'}
+              options={genderOptions}
+              onChange={handleChange}
+            />
 
-          <Label className={'label'} name={'Profile Pic'} />
-          <InputText name={'Picture'} className={'input-file'} type={'file'} />
+            <Label className={'label'} name={'Profile Pic'} />
+            <InputText
+              name={'Picture'}
+              className={'input-file'}
+              type={'file'}
+            />
 
-          <Label className={'label'} name={'Level of Education'} />
-          <SelectOption
-            options={educationOption}
-            name='Education'
-            onChange={handleChange}
-          />
+            <Label className={'label'} name={'Level of Education'} />
+            <SelectOption
+              options={educationOption}
+              name='Education'
+              onChange={handleChange}
+            />
 
-          <Label className={'label'} name={'Password'} />
-          <InputText
-            type={'password'}
-            name={'Password'}
-            placeholder={'Enter your password'}
-            onChange={handleChange}
-          />
-          <PassStrengthBar password={formData.Password} />
+            <Label className={'label'} name={'Password'} />
+            <InputText
+              type={'password'}
+              name={'Password'}
+              placeholder={'Enter your password'}
+              onChange={handleChange}
+            />
+            <PassStrengthBar password={formData.Password} />
 
-          <Label className={'label'} name={'Confirm Password'} />
-          <InputText
-            type={'password'}
-            name={'RePassword'}
-            placeholder={'Re enter your password'}
-            onChange={handleChange}
-          />
-          <PassStrengthBar password={formData.RePassword} />
+            <Label className={'label'} name={'Confirm Password'} />
+            <InputText
+              type={'password'}
+              name={'RePassword'}
+              placeholder={'Re enter your password'}
+              onChange={handleChange}
+            />
+            <PassStrengthBar password={formData.RePassword} />
 
-          <Button
-            className={'button'}
-            type={'submit'}
-            name={'Submit'}
-            onClick={handleClick}
-          />
-          <Validation
-            name={formData.Name}
-            email={formData.Email}
-            gender={formData.Gender}
-            education={formData.Education}
-            password={formData.Password}
-            repassword={formData.RePassword}
-            runner={runner}
-          />
-        </form>
-      </div>
+            <Button
+              className={'button'}
+              type={'submit'}
+              name={'Submit'}
+              onClick={handleClick}
+            />
+            <Validation
+              name={formData.Name}
+              email={formData.Email}
+              gender={formData.Gender}
+              education={formData.Education}
+              password={formData.Password}
+              repassword={formData.RePassword}
+              runner={runner}
+              formData={formData}
+            />
+          </form>
+        </div>
+      </Container>
       {/* Table to Display data */}
       <Table formData={formData} />
     </div>

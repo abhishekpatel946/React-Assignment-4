@@ -1,10 +1,19 @@
 import React from 'react';
+import DataService from '../Utils/DataService';
 import PropTypes from 'prop-types';
 
 const Validation = (props) => {
   // destructring props
-  const { name, email, gender, education, password, repassword, runner } =
-    props;
+  const {
+    name,
+    email,
+    gender,
+    education,
+    password,
+    repassword,
+    runner,
+    formData,
+  } = props;
 
   // validation check
   if (runner) {
@@ -35,7 +44,12 @@ const Validation = (props) => {
       alert('Form Validation Successful.');
     }
   }
-  return <div></div>;
+  return (
+    <div>
+      {/* call the localStorage dataService to store the data */}
+      <DataService key={email} formData={formData} />;
+    </div>
+  );
 };
 
 // typechecking with propTypes
@@ -47,6 +61,7 @@ Validation.propTypes = {
   password: PropTypes.string,
   repassword: PropTypes.string,
   runner: PropTypes.bool,
+  formData: PropTypes.object,
 };
 
 export default Validation;

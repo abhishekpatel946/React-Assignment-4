@@ -7,15 +7,14 @@
 
 .table {
   display: flex;
-  justify-content: center;
-  flex-direction: row;
+  justify-content: space-around;
   border: 1px solid $darkGrey;
-  .table:nth-child(even) {
+  th {
     background-color: $lightGrey;
   }
-  th,
   td {
     padding: 10px;
     text-align: center;
+    border-bottom: 1px solid $lightGrey;
   }
 }
