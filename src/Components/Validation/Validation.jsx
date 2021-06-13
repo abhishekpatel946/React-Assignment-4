@@ -47,7 +47,7 @@ const Validation = (props) => {
   return (
     <div>
       {/* call the localStorage dataService to store the data */}
-      <DataService key={email} formData={formData} />;
+      <DataService formData={formData} />
     </div>
   );
 };
