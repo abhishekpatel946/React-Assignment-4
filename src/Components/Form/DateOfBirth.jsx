@@ -1,17 +1,38 @@
 import React from 'react';
-import DatePicker from 'react-datepicker';
 import PropTypes from 'prop-types';
-import 'react-datepicker/dist/react-datepicker.css';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
 import './form-scss/form-component.scss';
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 200,
+  },
+}));
 
 const DateOfBirth = (props) => {
   // destructring props
-  const { dateOfBirth, onChange } = props;
+  const { dateOfBirth, onChange, className } = props;
+  const classes = useStyles();
+
   return (
-    <DatePicker
-      className='input-name date-picker'
-      selected={dateOfBirth}
+    <TextField
+      id='date'
+      label='Date of Birth'
+      type='date'
+      format='DD-MM-YYYY'
+      defaultValue={dateOfBirth}
       onChange={onChange}
+      className={(classes.textField, className)}
+      InputLabelProps={{
+        shrink: true,
+      }}
     />
   );
 };

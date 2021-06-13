@@ -39,7 +39,7 @@ const FormContainer = () => {
   // onChange handle
   const handleChange = (event) => {
     setFormData({
-      name: event.target.name,
+      name: !event.target.name ? 'Date' : event.target.name,
       value: event.target.value,
     });
   };
@@ -56,6 +56,7 @@ const FormContainer = () => {
     { id: 'Gender', title: 'Other' },
   ];
   const educationOption = [
+    { className: 'options-select-option', grade: 'Choose Grade' },
     { className: 'options-select-option', grade: '10th Grade' },
     { className: 'options-select-option', grade: '12th Grade' },
     { className: 'options-select-option', grade: "Bachelor's Degree" },
