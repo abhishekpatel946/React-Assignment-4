@@ -18,15 +18,14 @@ const InputText = (props) => {
   const { type, value, name, placeholder, onChange } = props;
   const classes = useStyles();
   return (
-    <form className={classes.root} noValidate autoComplete='on'>
-      <TextField
-        label={placeholder}
-        type={type}
-        value={value}
-        name={name}
-        onChange={onChange}
-      />
-    </form>
+    <TextField
+      label={placeholder}
+      type={type}
+      value={value}
+      name={name}
+      onChange={onChange}
+      required
+    />
   );
 };
 

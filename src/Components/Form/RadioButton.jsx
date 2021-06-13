@@ -17,6 +17,7 @@ const RadioButton = (props) => {
             value={item.title}
             name={item.id}
             onChange={onChange}
+            required
           />
           {item.title}
         </span>

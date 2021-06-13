@@ -3,6 +3,9 @@ import DataService from '../Utils/DataService';
 import PropTypes from 'prop-types';
 
 const Validation = (props) => {
+  // trigger the dataService for storing the validate data
+  let trigger = true;
+
   // destructring props
   const {
     name,
@@ -17,37 +20,27 @@ const Validation = (props) => {
 
   // validation check
   if (runner) {
-    if (!name) {
-      alert('Name is mandatory!');
-    }
-    if (!email) {
-      alert('Email is mandatory!');
-    } else if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-      alert('Email is incorrect!');
-    }
-    if (!gender) {
-      alert('Gender is mandatory!');
-    }
-    if (!education) {
-      alert('Education is mandatory!');
-    }
-    if (!password) {
-      alert('Password is mandatory');
-    } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
-      alert('Please choose a strong password!');
-    }
-    if (!repassword) {
-      alert('Confirm-Password is mandatory!');
-    } else if (repassword !== password) {
-      alert("Password's are not matched!");
-    } else {
-      alert('Form Validation Successful.');
+    if (name && email && gender && education && password && repassword) {
+      if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+        trigger = false;
+        alert('Email is incorrect!');
+      } else if (
+        !/^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/.test(
+          password
+        )
+      ) {
+        trigger = false;
+        alert('Please choose a strong password!');
+      } else if (repassword !== password) {
+        trigger = false;
+        alert("Password's are not matched!");
+      }
     }
   }
   return (
     <div>
       {/* call the localStorage dataService to store the data */}
-      <DataService formData={formData} />
+      {trigger ? <DataService formData={formData} /> : ''}
     </div>
   );
 };

@@ -15,6 +15,7 @@ const DataService = (props) => {
 
   // getter-service
   let resultData = JSON.parse(localStorage.getItem('userData'));
+  console.log(resultData);
 
   return <div>{/* <Table /> */}</div>;
 };
