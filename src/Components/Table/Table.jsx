@@ -4,7 +4,10 @@ import './table-style.scss';
 
 const Table = (props) => {
   // destructring props
-  const { formData } = props;
+  const { formData, resultData } = props;
+
+  console.log(`formData => `, formData);
+  console.log(`resultData => `, resultData);
 
   return (
     <div className='table-container'>
@@ -27,6 +30,7 @@ const Table = (props) => {
 // typechecking with propTypes
 Table.propTypes = {
   formData: PropTypes.object,
+  resultData: PropTypes.object,
 };
 
 export default Table;
