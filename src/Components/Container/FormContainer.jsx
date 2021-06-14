@@ -1,13 +1,14 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
 import Button from '../Form/Button';
 import Container from '@material-ui/core/Container';
 import DatePicker from '../Form/DateOfBirth';
-import DataService from '../Utils/DataService';
+import { getter, setter } from '../Utils/Data_Service';
 import InputText from '../Form/InputText';
 import Label from '../Form/Label';
 import PassStrengthBar from '../Form/PassStrenghtBar';
 import RadioButton from '../Form/RadioButton';
 import SelectOption from '../Form/SelectOption';
+import Table from '../Table/Table';
 import Validation from '../Validation/Validation';
 import './Form-container.scss';
 
@@ -22,19 +23,19 @@ const formReducer = (state, event) => {
 const FormContainer = () => {
   // state for containing data
   const [formData, setFormData] = useReducer(formReducer, {});
-  const [runner, setRunner] = useState(false);
+
+  // formData in array format
+  let arrayData = [formData];
 
   // onSubmission validation
   const handleSubmit = (event) => {
-    event.preventDafault();
-    setTimeout(() => {
-      setFormData({
-        name: '',
-        value: '',
-      });
-      setRunner(false);
-    }, 3000);
+    debugger;
+    // setter() service called
+    setter('userData', arrayData);
   };
+
+  // getter() service called
+  const updatedArr = getter('userData');
 
   // onChange handle
   const handleChange = (event) => {
@@ -42,11 +43,6 @@ const FormContainer = () => {
       name: !event.target.name ? 'Date' : event.target.name,
       value: event.target.value,
     });
-  };
-
-  // onClick handle
-  const handleClick = (event) => {
-    setRunner(true);
   };
 
   // Constant Options
@@ -127,27 +123,21 @@ const FormContainer = () => {
             />
             <PassStrengthBar password={formData.RePassword} />
 
-            <Button
-              className={'button'}
-              type={'submit'}
-              name={'Submit'}
-              onClick={handleClick}
-            />
-            <Validation
+            <Button className={'button'} type={'submit'} name={'Submit'} />
+            {/* <Validation
               name={formData.Name}
               email={formData.Email}
               gender={formData.Gender}
               education={formData.Education}
               password={formData.Password}
               repassword={formData.RePassword}
-              runner={runner}
               formData={formData}
-            />
+            /> */}
           </form>
         </div>
       </Container>
       {/* Table to Display data */}
-      <DataService formData={formData} runner={runner} />
+      <Table formData={updatedArr ? updatedArr : [{}]} />
     </div>
   );
 };

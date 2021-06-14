@@ -1,39 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import PropTypes from 'prop-types';
 import './table-style.scss';
-import resultData from '../Utils/DataService';
 
 const Table = (props) => {
   // destructring props
-  const { resultData } = props;
+  const { formData } = props;
 
-  // delete the item from localStorage
-  const deleteClick = (e) => {
-    console.log('deleting...', e);
-  };
-
-  // update the item from localStorage
-  const updateClick = (e) => {
-    console.log('updating...', e);
-  };
+  // check the data
+  // formData.forEach((element) => {
+  //   Object.entries(element).map(([name, value]) => console.log(name, value));
+  // });
 
   return (
     <div className='table-container'>
       <table className='table'>
-        {Object.entries(resultData).map(([name, value]) => (
-          <div>
+        {formData.forEach((element) => {
+          Object.entries(element).map(([name, value]) => (
             <tr>
-              <th>{name}</th>
+              <td>{name}</td>
+              <td>{value}</td>
             </tr>
-            <tr>
-              <td>{value.toString()}</td>
-            </tr>
-            <EditIcon onClick={(e) => updateClick(e)} />
-            <DeleteIcon onClick={(e) => deleteClick(e)} />
-          </div>
-        ))}
+          ));
+        })}
+        <EditIcon />
+        <DeleteIcon />
       </table>
     </div>
   );
@@ -41,11 +33,7 @@ const Table = (props) => {
 
 // typechecking with propTypes
 Table.propTypes = {
-  resultData: PropTypes.object,
+  formData: PropTypes.object,
 };
 
 export default Table;
-
-// userData
-
-// {"Name":"Abhishek Patel","Email":"abhishekpatel946@gmail.com","Date":"2021-06-15","Gender":"Male","Education":"10th Grade","Password":"#Apatel@123","RePassword":"#Apatel@123"}

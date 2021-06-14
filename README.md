@@ -31,7 +31,18 @@ At the click of a Submit button, perform validations on user input. If there is 
 As you did yesterday, raise a PR and get it reviewed.
 ```
 
-### Link to our application:
+### Pending Task
+```
+1. dataService.js
+    - getter()
+    - setter()
+2. create a Array[old-data + new-data] 
+3. onClick(
+        setter(array)
+    );
+4. Table< getter(all_data) />
+5. Edit and Delete also in FormLayout with getter setter
+```
 
 
 ```sh

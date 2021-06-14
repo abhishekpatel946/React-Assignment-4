@@ -14,7 +14,7 @@ const InputText = (props) => {
       value={value}
       name={name}
       onChange={onChange}
-      required
+      // required
     />
   );
 };
