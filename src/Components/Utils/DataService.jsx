@@ -15,16 +15,11 @@ const DataService = (props) => {
 
   // getter-service
   const data = localStorage.getItem('userData');
-  let resultData;
-  if (data && runner) {
-    resultData = JSON.parse(localStorage.getItem('userData'));
-  }
+  console.log('before sending...', JSON.parse(data));
+  <Table formData={formData} resultData={JSON.parse(data)} runner={runner} />;
+  console.log('after sending...', JSON.parse(data));
 
-  return (
-    <div>
-      <Table resultData={resultData} formData={formData} />
-    </div>
-  );
+  return <div></div>;
 };
 
 // typechecking with propTypes

@@ -4,8 +4,8 @@ import './table-style.scss';
 
 const Table = (props) => {
   // destructring props
-  const { formData, resultData } = props;
-  console.log(`Table ==> `, resultData);
+  const { formData, resultData, runner } = props;
+  console.log(`Table data ==>  ${resultData}`);
 
   return (
     <div className='table-container'>
@@ -29,6 +29,7 @@ const Table = (props) => {
 Table.propTypes = {
   formData: PropTypes.object,
   resultData: PropTypes.object,
+  runner: PropTypes.bool,
 };
 
 export default Table;
