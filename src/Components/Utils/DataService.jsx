@@ -4,25 +4,33 @@ import Table from '../Table/Table';
 
 const DataService = (props) => {
   // destructring props
-  const { formData } = props;
+  const { formData, runner } = props;
 
   // update the state of localStorage
   useEffect(() => {
-    if (formData) {
+    if (formData && runner) {
       localStorage.setItem('userData', JSON.stringify(formData));
     }
-  }, [formData]);
+  }, [formData, runner]);
 
   // getter-service
-  let resultData = JSON.parse(localStorage.getItem('userData'));
-  console.log(resultData);
+  const data = localStorage.getItem('userData');
+  let resultData;
+  if (data && runner) {
+    resultData = JSON.parse(localStorage.getItem('userData'));
+  }
 
-  return <div>{/* <Table /> */}</div>;
+  return (
+    <div>
+      <Table resultData={resultData} formData={formData} />
+    </div>
+  );
 };
 
 // typechecking with propTypes
 DataService.propTypes = {
   formData: PropTypes.object,
+  runner: PropTypes.bool,
 };
 
 export default DataService;

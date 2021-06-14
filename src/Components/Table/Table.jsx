@@ -5,9 +5,7 @@ import './table-style.scss';
 const Table = (props) => {
   // destructring props
   const { formData, resultData } = props;
-
-  console.log(`formData => `, formData);
-  console.log(`resultData => `, resultData);
+  console.log(`Table ==> `, resultData);
 
   return (
     <div className='table-container'>
