@@ -2,12 +2,12 @@ import React, { useReducer, useState } from 'react';
 import Button from '../Form/Button';
 import Container from '@material-ui/core/Container';
 import DatePicker from '../Form/DateOfBirth';
+import DataService from '../Utils/DataService';
 import InputText from '../Form/InputText';
 import Label from '../Form/Label';
 import PassStrengthBar from '../Form/PassStrenghtBar';
 import RadioButton from '../Form/RadioButton';
 import SelectOption from '../Form/SelectOption';
-import Table from '../Table/Table';
 import Validation from '../Validation/Validation';
 import './Form-container.scss';
 
@@ -147,7 +147,7 @@ const FormContainer = () => {
         </div>
       </Container>
       {/* Table to Display data */}
-      <Table formData={formData} />
+      <DataService formData={formData} runner={runner} />
     </div>
   );
 };

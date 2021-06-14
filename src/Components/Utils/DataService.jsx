@@ -14,12 +14,11 @@ const DataService = (props) => {
   }, [formData, runner]);
 
   // getter-service
-  const data = localStorage.getItem('userData');
-  console.log('before sending...', JSON.parse(data));
-  <Table formData={formData} resultData={JSON.parse(data)} runner={runner} />;
-  console.log('after sending...', JSON.parse(data));
+  const data = JSON.parse(localStorage.getItem('userData'));
 
-  return <div></div>;
+  return (
+    <div>{data ? <Table resultData={data} /> : <Table resultData={[]} />}</div>
+  );
 };
 
 // typechecking with propTypes
