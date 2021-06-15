@@ -1,8 +1,8 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
 import Button from '../Form/Button';
 import Container from '@material-ui/core/Container';
 import DatePicker from '../Form/DateOfBirth';
-import { getter, setter } from '../Utils/Data_Service';
+import { getter, initialSet, remove, setter } from '../Utils/Data_Service';
 import InputText from '../Form/InputText';
 import Label from '../Form/Label';
 import PassStrengthBar from '../Form/PassStrenghtBar';
@@ -16,6 +16,7 @@ import './Form-container.scss';
 const formReducer = (state, event) => {
   return {
     ...state,
+    id: new Date().getTime(),
     [event.name]: event.value,
   };
 };
@@ -23,22 +24,29 @@ const formReducer = (state, event) => {
 const FormContainer = () => {
   // state for containing data
   const [formData, setFormData] = useReducer(formReducer, {});
+  const [updatedArr, setUpdatedArr] = useState([]);
+
+  // useEffect at once on page-load
+  useEffect(() => {
+    // getter() service called
+    setUpdatedArr(getter('userData'));
+  }, []);
 
   // formData in array format
   let arrayData = [formData];
 
   // onSubmission validation
   const handleSubmit = (event) => {
-    debugger;
+    event.preventDefault();
+
     // setter() service called
     setter('userData', arrayData);
   };
 
-  // getter() service called
-  const updatedArr = getter('userData');
-
   // onChange handle
   const handleChange = (event) => {
+    event.preventDefault();
+
     setFormData({
       name: !event.target.name ? 'Date' : event.target.name,
       value: event.target.value,
@@ -137,7 +145,10 @@ const FormContainer = () => {
         </div>
       </Container>
       {/* Table to Display data */}
-      <Table formData={updatedArr ? updatedArr : [{}]} />
+      <Table
+        formData={updatedArr ? updatedArr : initialSet()}
+        setFormData={setFormData}
+      />
     </div>
   );
 };
