@@ -27,8 +27,8 @@ const DateOfBirth = (props) => {
       label='Date of Birth'
       type='date'
       format='DD-MM-YYYY'
-      // required
-      defaultValue={dateOfBirth}
+      required
+      defaultValue={new Date()}
       onChange={onChange}
       className={(classes.textField, className)}
       InputLabelProps={{

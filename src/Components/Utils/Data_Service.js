@@ -1,6 +1,7 @@
 // initial emtpy state
 const initialState = [
   {
+    id: null,
     Name: '',
     Email: '',
     DateOfBirth: '',

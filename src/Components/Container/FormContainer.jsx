@@ -2,7 +2,7 @@ import React, { useReducer, useState, useEffect } from 'react';
 import Button from '../Form/Button';
 import Container from '@material-ui/core/Container';
 import DatePicker from '../Form/DateOfBirth';
-import { getter, initialSet, remove, setter } from '../Utils/Data_Service';
+import { getter, initialSet, setter } from '../Utils/Data_Service';
 import InputText from '../Form/InputText';
 import Label from '../Form/Label';
 import PassStrengthBar from '../Form/PassStrenghtBar';
@@ -41,6 +41,14 @@ const FormContainer = () => {
 
     // setter() service called
     setter('userData', arrayData);
+    alert('Data Saved Successfully.');
+
+    // reset the form
+    document.getElementById('formId').reset();
+    setFormData({
+      name: '',
+      value: '',
+    });
   };
 
   // onChange handle
@@ -72,7 +80,7 @@ const FormContainer = () => {
     <div>
       <Container maxWidth='sm'>
         <div className='form-container'>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} id='formId'>
             <Label className={'label'} name={'Name'} />
             <InputText
               type={'text'}
@@ -148,6 +156,8 @@ const FormContainer = () => {
       <Table
         formData={updatedArr ? updatedArr : initialSet()}
         setFormData={setFormData}
+        setUpdatedArr={setUpdatedArr}
+        formReducer={formReducer}
       />
     </div>
   );
