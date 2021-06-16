@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './form-scss/form-component.scss';
 
 const SelectOptions = (props) => {
   // destructring props
@@ -11,7 +10,9 @@ const SelectOptions = (props) => {
       className='input-name'
       name={name}
       value={value}
-      onChange={onChange}>
+      onChange={onChange}
+      // required
+    >
       {options.map((item) => (
         <option key={item.grade} className={item.className}>
           {item.grade}

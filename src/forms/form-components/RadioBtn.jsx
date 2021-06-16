@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './form-scss/form-component.scss';
 
-const RadioButton = (props) => {
+const RadioBtn = (props) => {
   // destructring props
   const { onChange, className, options } = props;
 
@@ -17,7 +16,7 @@ const RadioButton = (props) => {
             value={item.title}
             name={item.id}
             onChange={onChange}
-            required
+            // required
           />
           {item.title}
         </span>
@@ -26,10 +25,10 @@ const RadioButton = (props) => {
   );
 };
 // typechecking with propTypes
-RadioButton.propTypes = {
+RadioBtn.propTypes = {
   onChange: PropTypes.func,
   className: PropTypes.string,
   options: PropTypes.array,
 };
 
-export default RadioButton;
+export default RadioBtn;

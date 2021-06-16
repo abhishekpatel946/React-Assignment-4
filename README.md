@@ -1,5 +1,3 @@
-# Getting Started with Create React App
-
 
 <!-- ABOUT THE PROJECT -->
 # [React_Training_Day_4_Assignment]()
@@ -48,8 +46,3 @@ As you did yesterday, raise a PR and get it reviewed.
 ```sh
 Status: live and running
 ```
-
-### Gallery
-![Main-Screeen1](https://github.com/abhishekpatel946/React-Assignment-4/blob/react_assignment_4/src/Assets/demo1.png)
-
-![Main-Screeen2](https://github.com/abhishekpatel946/React-Assignment-4/blob/react_assignment_4/src/Assets/demo2.png)

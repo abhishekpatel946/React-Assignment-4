@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextField from '@material-ui/core/TextField';
-import './form-scss/form-component.scss';
 
-const InputText = (props) => {
+export const InputText = (props) => {
   // destructring props
   const { type, value, name, placeholder, onChange } = props;
 
   return (
-    <TextField
-      label={placeholder}
+    <input
       type={type}
-      value={value}
+      placeholder={placeholder}
       name={name}
+      value={value}
       onChange={onChange}
       // required
     />
