@@ -22,7 +22,7 @@ export const DatePicker = (props) => {
 
 // typechecking with propTypes
 DatePicker.propTypes = {
-  value: PropTypes.object,
+  value: PropTypes.string,
   onChange: PropTypes.func,
 };
 

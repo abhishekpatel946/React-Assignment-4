@@ -35,7 +35,22 @@ As you did yesterday, raise a PR and get it reviewed.
 -[] when user reload the store data will removed from localstorage and add null/emtpy value in table.
 ```
 
-
-```sh
-Status: live and running
+### File Structure
+```
+src
+    -container
+       - Home
+         - Home.jsx
+       - Form
+         - components
+           - Input.jsx
+           - DoB.jsx
+           - Radio.jsx
+           - Select.jsx
+         - EditUserForm.jsx
+         - AddUserForm.jsx
+       - Table
+         - Table.jsx
+       - Utils
+         - dataService.js
 ```

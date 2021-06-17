@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { setter, remove, getter, initialState } from '../utils/dataService';
-import AddUserForm from '../forms/AddUserForm';
-import EditUserForm from '../forms/EditUserForm';
-import UserTable from '../tables/UserTable';
+import {
+  getFromLocalStorage,
+  setIntoLocalStorage,
+  removeFromLocalStorage,
+  initialState,
+} from '../utils/dataService';
+import { AddUserForm, EditUserForm } from '../forms';
+import { UserTable } from '../tables';
 
-const Container = () => {
+const Home = () => {
   // initial Data
-  const usersData = getter();
+  const usersData = getFromLocalStorage();
 
   // Setting state
   const [users, setUsers] = useState(usersData);
   const [currentUser, setCurrentUser] = useState(usersData);
   const [editing, setEditing] = useState(false);
+
+  console.log(users);
 
   // fetch the data at once on load
   useEffect(() => {
@@ -19,26 +25,26 @@ const Container = () => {
       initialState();
     }
     setUsers(usersData);
-  }, []);
+  }, [users, usersData]);
 
   // CRUD operations
   const addUser = (user) => {
     user.id = new Date().getTime();
-    setUsers([...users, user]);
-    setter(users);
+    setUsers([users, user]);
+    setIntoLocalStorage(users);
     document.getElementById('addUserFormId').reset();
   };
 
   const deleteUser = (id) => {
     setEditing(false);
     setUsers(users.filter((user) => user.id !== id));
-    remove(users);
+    removeFromLocalStorage(users);
   };
 
   const updateUser = (id, updatedUser) => {
     setEditing(false);
     setUsers(users.map((user) => (user.id === id ? updatedUser : user)));
-    setter(users);
+    setIntoLocalStorage(users);
     document.getElementById('editUserFormId').reset();
   };
 
@@ -125,4 +131,4 @@ const Container = () => {
   );
 };
 
-export default Container;
+export default Home;

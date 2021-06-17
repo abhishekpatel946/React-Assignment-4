@@ -19,12 +19,12 @@ export function initialState() {
 }
 
 // get the data from localStorage
-export function getter() {
+export function getFromLocalStorage() {
   return JSON.parse(localStorage.getItem(keyName));
 }
 
 // set the data into localStorage
-export function setter(arrayData) {
+export function setIntoLocalStorage(arrayData) {
   const data = localStorage.getItem(keyName);
   Object.keys(data).forEach((k) => data[k] == null && delete data[k]);
   if (data && data.length > 0) {
@@ -39,8 +39,8 @@ export function setter(arrayData) {
 }
 
 // remove the data from localStorage
-export function remove(remainArr) {
+export function removeFromLocalStorage(remainArr) {
   localStorage.clear(keyName);
   initialState();
-  setter(keyName, remainArr);
+  setIntoLocalStorage(keyName, remainArr);
 }

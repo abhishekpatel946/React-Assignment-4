@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import DatePicker from './form-components/DatePicker';
-import InputText from './form-components/InputText';
+import { DatePicker, InputText, RadioBtn, Select } from './form-components';
 import PropTypes from 'prop-types';
-import RadioBtn from './form-components/RadioBtn';
-import Select from './form-components/Select';
-import PropType from 'prop-types';
 
 const EditUserForm = (props) => {
   // destructring the props
@@ -97,12 +93,12 @@ const EditUserForm = (props) => {
 
 // type checking props
 EditUserForm.propTypes = {
-  editing: PropType.bool,
+  editing: PropTypes.bool,
   currentUser: PropTypes.object,
   updateUser: PropTypes.func,
   setEditing: PropTypes.func,
-  genderOptions: PropType.array,
-  educationOption: PropType.array,
+  genderOptions: PropTypes.array,
+  educationOption: PropTypes.array,
 };
 
 export default EditUserForm;

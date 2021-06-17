@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import DatePicker from './form-components/DatePicker';
-import InputText from './form-components/InputText';
-import RadioBtn from './form-components/RadioBtn';
-import Select from './form-components/Select';
+import { DatePicker, InputText, RadioBtn, Select } from './form-components';
 import PropTypes from 'prop-types';
 
 const AddUserForm = (props) => {
