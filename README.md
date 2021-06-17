@@ -1,6 +1,6 @@
 
 <!-- ABOUT THE PROJECT -->
-# [React_Training_Day_4_Assignment]()
+# [React_Training_Day_4-7_Assignment](https://blissful-mccarthy-5dc21b.netlify.app/)
 
 ## **Completed Task** 
 ```
@@ -31,8 +31,7 @@ As you did yesterday, raise a PR and get it reviewed.
 
 ### Pending Task
 ```
-1. Bug Report
--[] when user reload the store data will removed from localstorage and add null/emtpy value in table.
+- Add Redux for state updation.
 ```
 
 ### File Structure
