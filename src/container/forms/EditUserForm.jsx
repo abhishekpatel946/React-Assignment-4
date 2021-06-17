@@ -22,7 +22,6 @@ const EditUserForm = (props) => {
     const { name, value } = event.target;
     setUser({
       ...user,
-      id: new Date().getTime(),
       [name]: value,
     });
   };
@@ -39,7 +38,7 @@ const EditUserForm = (props) => {
         name={'name'}
         type={'text'}
         placeholder={'Enter the name'}
-        value={user.name || ''}
+        value={user.name}
         onChange={handleInputChange}
       />
       <label>Email</label>
@@ -47,22 +46,22 @@ const EditUserForm = (props) => {
         name={'email'}
         type={'email'}
         placeholder={'Enter the email'}
-        value={user.email || ''}
+        value={user.email}
         onChange={handleInputChange}
       />
       <label>Date Of Birth</label>
-      <DatePicker value={user.dob || ''} onChange={handleInputChange} />
+      <DatePicker value={user.dob} onChange={handleInputChange} />
       <label>Gender</label>
       <RadioBtn
         name='gender'
-        value={user.gender || ''}
+        value={user.gender}
         onChange={handleInputChange}
         options={genderOptions}
       />
       <label>Education</label>
       <Select
         name='education'
-        value={user.education || ''}
+        value={user.education}
         onChange={handleInputChange}
         options={educationOption}
       />
@@ -71,7 +70,7 @@ const EditUserForm = (props) => {
         name={'password'}
         type={'password'}
         placeholder={'Enter the password'}
-        value={user.password || ''}
+        value={user.password}
         onChange={handleInputChange}
       />
       <label>Confirm Password</label>
@@ -79,7 +78,7 @@ const EditUserForm = (props) => {
         name={'cpassword'}
         type={'password'}
         placeholder={'Enter the confirm password'}
-        value={user.cpassword || ''}
+        value={user.cpassword}
         onChange={handleInputChange}
       />
 
