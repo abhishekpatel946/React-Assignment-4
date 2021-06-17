@@ -14,10 +14,8 @@ const Home = () => {
 
   // Setting state
   const [users, setUsers] = useState(usersData);
-  const [currentUser, setCurrentUser] = useState(usersData);
+  const [currentUser, setCurrentUser] = useState(initialState);
   const [editing, setEditing] = useState(false);
-
-  console.log(users);
 
   // fetch the data at once on load
   useEffect(() => {
@@ -25,12 +23,12 @@ const Home = () => {
       initialState();
     }
     setUsers(usersData);
-  }, [users, usersData]);
+  }, []);
 
   // CRUD operations
   const addUser = (user) => {
-    user.id = new Date().getTime();
-    setUsers([users, user]);
+    user.id = users.length + 1;
+    setUsers([...users, user]);
     setIntoLocalStorage(users);
     document.getElementById('addUserFormId').reset();
   };

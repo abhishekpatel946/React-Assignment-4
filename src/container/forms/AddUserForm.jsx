@@ -11,7 +11,6 @@ const AddUserForm = (props) => {
     const { name, value } = event.target;
     setUser({
       ...user,
-      id: new Date().getTime(),
       [name]: value,
     });
   };
@@ -41,7 +40,7 @@ const AddUserForm = (props) => {
         name={'name'}
         type={'text'}
         placeholder={'Enter the name'}
-        value={user.name || ''}
+        value={user.name}
         onChange={handleInputChange}
       />
 
@@ -50,7 +49,7 @@ const AddUserForm = (props) => {
         name={'email'}
         type={'email'}
         placeholder={'Enter the email'}
-        value={user.email || ''}
+        value={user.email}
         onChange={handleInputChange}
       />
 
@@ -60,7 +59,7 @@ const AddUserForm = (props) => {
       <label>Gender</label>
       <RadioBtn
         name='gender'
-        value={user.gender || ''}
+        value={user.gender}
         onChange={handleInputChange}
         options={genderOptions}
       />
@@ -68,7 +67,7 @@ const AddUserForm = (props) => {
       <label>Education</label>
       <Select
         name='education'
-        value={user.education || ''}
+        value={user.education}
         onChange={handleInputChange}
         options={educationOption}
       />
@@ -78,7 +77,7 @@ const AddUserForm = (props) => {
         name={'password'}
         type={'password'}
         placeholder={'Enter the password'}
-        value={user.password || ''}
+        value={user.password}
         onChange={handleInputChange}
       />
 
@@ -87,7 +86,7 @@ const AddUserForm = (props) => {
         name={'cpassword'}
         type={'password'}
         placeholder={'Enter the confirm password'}
-        value={user.cpassword || ''}
+        value={user.cpassword}
         onChange={handleInputChange}
       />
 

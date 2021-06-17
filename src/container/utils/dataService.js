@@ -1,26 +1,20 @@
 // Constant Keyname for localStorage
 const keyName = 'userData';
-const initialData = [
-  {
-    id: 1,
-    name: 'Admin',
-    email: 'admin@mail.com',
-    dob: '01/01/1900',
-    gender: 'Male',
-    education: '12th',
-    password: 'admin@123',
-    cpassword: 'admin@123',
-  },
-];
 
 // handle the initial state of localStorage
 export function initialState() {
-  localStorage.setItem('userData', JSON.stringify(initialData));
+  localStorage.setItem('userData', JSON.stringify([]));
 }
 
 // get the data from localStorage
 export function getFromLocalStorage() {
-  return JSON.parse(localStorage.getItem(keyName));
+  const data = localStorage.getItem(keyName);
+  if (data !== null) {
+    return JSON.parse(data);
+  } else {
+    initialState();
+    return [];
+  }
 }
 
 // set the data into localStorage
@@ -35,7 +29,7 @@ export function setIntoLocalStorage(arrayData) {
       JSON.stringify(prevData ? prevData : arrayData)
     );
   }
-  return localStorage.setItem(keyName, initialData);
+  return localStorage.setItem(keyName, []);
 }
 
 // remove the data from localStorage
