@@ -1,48 +1,46 @@
-import React, { useEffect, useState } from 'react';
-import {
-  getFromLocalStorage,
-  setIntoLocalStorage,
-  removeFromLocalStorage,
-  initialState,
-} from '../utils/dataService';
+import React, { useState } from 'react';
+import { getFromLocalStorage, setIntoLocalStorage } from '../utils/dataService';
 import { AddUserForm, EditUserForm } from '../forms';
 import { UserTable } from '../tables';
 
 const Home = () => {
-  // initial Data
-  const usersData = getFromLocalStorage();
+  // initial Form State Data
+  const initialFormState = {
+    id: null,
+    name: '',
+    email: '',
+    dob: '',
+    gender: '',
+    education: '',
+    password: '',
+    cpassword: '',
+  };
 
   // Setting state
-  const [users, setUsers] = useState(usersData);
-  const [currentUser, setCurrentUser] = useState(initialState);
+  const [users, setUsers] = useState(getFromLocalStorage);
+  const [currentUser, setCurrentUser] = useState(initialFormState);
   const [editing, setEditing] = useState(false);
-
-  // fetch the data at once on load
-  useEffect(() => {
-    if (!users) {
-      initialState();
-    }
-    setUsers(usersData);
-  }, []);
 
   // CRUD operations
   const addUser = (user) => {
     user.id = users.length + 1;
     setUsers([...users, user]);
-    setIntoLocalStorage(users);
+    setIntoLocalStorage(user);
     document.getElementById('addUserFormId').reset();
   };
 
   const deleteUser = (id) => {
     setEditing(false);
     setUsers(users.filter((user) => user.id !== id));
-    removeFromLocalStorage(users);
+    setIntoLocalStorage(users.filter((user) => user.id !== id));
   };
 
   const updateUser = (id, updatedUser) => {
     setEditing(false);
     setUsers(users.map((user) => (user.id === id ? updatedUser : user)));
-    setIntoLocalStorage(users);
+    setIntoLocalStorage(
+      users.map((user) => (user.id === id ? updatedUser : user))
+    );
     document.getElementById('editUserFormId').reset();
   };
 
@@ -59,8 +57,6 @@ const Home = () => {
       cpassword: user.cpassword,
     });
   };
-
-  console.log(users);
 
   // Constant table heading
   const thead = [

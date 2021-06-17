@@ -31,10 +31,3 @@ export function setIntoLocalStorage(arrayData) {
   }
   return localStorage.setItem(keyName, []);
 }
-
-// remove the data from localStorage
-export function removeFromLocalStorage(remainArr) {
-  localStorage.clear(keyName);
-  initialState();
-  setIntoLocalStorage(keyName, remainArr);
-}

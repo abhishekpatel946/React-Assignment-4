@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { DatePicker, InputText, RadioBtn, Select } from './form-components';
 import PropTypes from 'prop-types';
+import PasswordStrengthBar from 'react-password-strength-bar';
 
 const EditUserForm = (props) => {
   // destructring the props
@@ -41,6 +42,7 @@ const EditUserForm = (props) => {
         value={user.name}
         onChange={handleInputChange}
       />
+
       <label>Email</label>
       <InputText
         name={'email'}
@@ -49,8 +51,10 @@ const EditUserForm = (props) => {
         value={user.email}
         onChange={handleInputChange}
       />
+
       <label>Date Of Birth</label>
-      <DatePicker value={user.dob} onChange={handleInputChange} />
+      <DatePicker name='dob' value={user.dob} onChange={handleInputChange} />
+
       <label>Gender</label>
       <RadioBtn
         name='gender'
@@ -58,6 +62,7 @@ const EditUserForm = (props) => {
         onChange={handleInputChange}
         options={genderOptions}
       />
+
       <label>Education</label>
       <Select
         name='education'
@@ -65,6 +70,7 @@ const EditUserForm = (props) => {
         onChange={handleInputChange}
         options={educationOption}
       />
+
       <label>Password</label>
       <InputText
         name={'password'}
@@ -73,6 +79,8 @@ const EditUserForm = (props) => {
         value={user.password}
         onChange={handleInputChange}
       />
+      <PasswordStrengthBar password={user.password} />
+
       <label>Confirm Password</label>
       <InputText
         name={'cpassword'}
@@ -81,6 +89,7 @@ const EditUserForm = (props) => {
         value={user.cpassword}
         onChange={handleInputChange}
       />
+      <PasswordStrengthBar password={user.cpassword} />
 
       <button>Update user</button>
       <button onClick={() => setEditing(false)} className='button muted-button'>

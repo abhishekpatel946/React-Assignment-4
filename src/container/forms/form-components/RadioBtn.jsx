@@ -6,9 +6,9 @@ const RadioBtn = (props) => {
   const { onChange, className, options } = props;
 
   return (
-    <div className='radio-button'>
+    <div>
       {options.map((item) => (
-        <span key={item.title} className='radio-text'>
+        <span key={item.title} style={{ padding: '10px', fontSize: '20px' }}>
           <input
             key={item.title}
             className={className}
@@ -16,7 +16,7 @@ const RadioBtn = (props) => {
             value={item.title}
             name={item.id}
             onChange={onChange}
-            // required
+            required
           />
           {item.title}
         </span>

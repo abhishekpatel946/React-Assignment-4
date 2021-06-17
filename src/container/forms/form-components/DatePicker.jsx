@@ -12,7 +12,7 @@ export const DatePicker = (props) => {
       format='DD-MM-YYYY'
       onChange={onChange}
       value={value}
-      // required
+      required
       InputLabelProps={{
         shrink: true,
       }}

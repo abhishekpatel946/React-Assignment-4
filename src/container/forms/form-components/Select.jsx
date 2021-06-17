@@ -11,8 +11,7 @@ const SelectOptions = (props) => {
       name={name}
       value={value}
       onChange={onChange}
-      // required
-    >
+      required>
       {options.map((item) => (
         <option key={item.grade} className={item.className}>
           {item.grade}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { DatePicker, InputText, RadioBtn, Select } from './form-components';
 import PropTypes from 'prop-types';
+import PasswordStrengthBar from 'react-password-strength-bar';
 
 const AddUserForm = (props) => {
   // destructring props
@@ -29,9 +30,11 @@ const AddUserForm = (props) => {
           !user.education &&
           !user.password &&
           !user.cpassword
-        )
+        ) {
           return alert('Please fill the field!!!');
-
+        } else if (user.password !== user.cpassword) {
+          return alert('Password are not matched!!!');
+        }
         addUser(user);
         setUser(user);
       }}>
@@ -80,6 +83,7 @@ const AddUserForm = (props) => {
         value={user.password}
         onChange={handleInputChange}
       />
+      <PasswordStrengthBar password={user.password} />
 
       <label>Confirm Password</label>
       <InputText
@@ -89,6 +93,7 @@ const AddUserForm = (props) => {
         value={user.cpassword}
         onChange={handleInputChange}
       />
+      <PasswordStrengthBar password={user.cpassword} />
 
       <button>Add new user</button>
     </form>
