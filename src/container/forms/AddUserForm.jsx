@@ -5,7 +5,7 @@ import PasswordStrengthBar from 'react-password-strength-bar';
 
 const AddUserForm = (props) => {
   // destructring props
-  const { addUser, genderOptions, educationOption } = props;
+  const { addNewUser, genderOptions, educationOption } = props;
   const [user, setUser] = useState([]);
 
   const handleInputChange = (event) => {
@@ -35,7 +35,7 @@ const AddUserForm = (props) => {
         } else if (user.password !== user.cpassword) {
           return alert('Password are not matched!!!');
         }
-        addUser(user);
+        addNewUser(user);
         setUser(user);
       }}>
       <label>Name</label>
@@ -102,7 +102,7 @@ const AddUserForm = (props) => {
 
 // typechecking with propTypes
 AddUserForm.propTypes = {
-  addUser: PropTypes.func,
+  addNewUser: PropTypes.func,
   genderOptions: PropTypes.array,
   educationOption: PropTypes.array,
 };

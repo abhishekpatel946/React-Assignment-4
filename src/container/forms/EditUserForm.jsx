@@ -7,7 +7,7 @@ const EditUserForm = (props) => {
   // destructring the props
   const {
     currentUser,
-    updateUser,
+    updateOldUser,
     setEditing,
     genderOptions,
     educationOption,
@@ -32,7 +32,7 @@ const EditUserForm = (props) => {
       id='editUserFormId'
       onSubmit={(event) => {
         event.preventDefault();
-        updateUser(user.id, user);
+        updateOldUser(user.id, user);
       }}>
       <label>Name</label>
       <InputText
@@ -103,7 +103,7 @@ const EditUserForm = (props) => {
 EditUserForm.propTypes = {
   editing: PropTypes.bool,
   currentUser: PropTypes.object,
-  updateUser: PropTypes.func,
+  updateOldUser: PropTypes.func,
   setEditing: PropTypes.func,
   genderOptions: PropTypes.array,
   educationOption: PropTypes.array,

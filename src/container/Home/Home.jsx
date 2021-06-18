@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { getFromLocalStorage, setIntoLocalStorage } from '../utils/dataService';
 import { AddUserForm, EditUserForm } from '../forms';
 import { UserTable } from '../tables';
+import { addUser, deleteUser, updateUser } from '../../redux/actions';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Home = () => {
   // initial Form State Data
@@ -17,30 +18,24 @@ const Home = () => {
   };
 
   // Setting state
-  const [users, setUsers] = useState(getFromLocalStorage);
   const [currentUser, setCurrentUser] = useState(initialFormState);
   const [editing, setEditing] = useState(false);
 
+  const dispatch = useDispatch();
+  const usersList = useSelector((state) => state.userReducers.users);
+
   // CRUD operations
-  const addUser = (user) => {
-    user.id = users.length + 1;
-    setUsers([...users, user]);
-    setIntoLocalStorage(user);
+  const addNewUser = (user) => {
+    dispatch(addUser(user));
     document.getElementById('addUserFormId').reset();
   };
 
-  const deleteUser = (id) => {
-    setEditing(false);
-    setUsers(users.filter((user) => user.id !== id));
-    setIntoLocalStorage(users.filter((user) => user.id !== id));
+  const deleteOldUser = (id) => {
+    dispatch(deleteUser(id));
   };
 
-  const updateUser = (id, updatedUser) => {
-    setEditing(false);
-    setUsers(users.map((user) => (user.id === id ? updatedUser : user)));
-    setIntoLocalStorage(
-      users.map((user) => (user.id === id ? updatedUser : user))
-    );
+  const updateOldUser = (id, updatedUser) => {
+    dispatch(updateUser(id, updateUser));
     document.getElementById('editUserFormId').reset();
   };
 
@@ -93,9 +88,8 @@ const Home = () => {
               <h2>Edit user</h2>
               <EditUserForm
                 editing={editing}
-                setEditing={setEditing}
                 currentUser={currentUser}
-                updateUser={updateUser}
+                updateOldUser={updateOldUser}
                 genderOptions={genderOptions}
                 educationOption={educationOption}
               />
@@ -104,7 +98,7 @@ const Home = () => {
             <div>
               <h2>Add user</h2>
               <AddUserForm
-                addUser={addUser}
+                addNewUser={addNewUser}
                 genderOptions={genderOptions}
                 educationOption={educationOption}
               />
@@ -115,9 +109,9 @@ const Home = () => {
           <h2>View users</h2>
           <UserTable
             thead={thead}
-            users={!users ? [] : users}
+            users={!usersList ? [] : usersList}
             editRow={editRow}
-            deleteUser={deleteUser}
+            deleteOldUser={deleteOldUser}
           />
         </div>
       </div>

@@ -12,7 +12,7 @@ export const InputText = (props) => {
       name={name}
       value={value}
       onChange={onChange}
-      required
+      // required
     />
   );
 };
