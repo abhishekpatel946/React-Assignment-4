@@ -1,9 +1,11 @@
+// initial data
 const initialData = {
   users: [],
 };
 
 const userReducers = (state = initialData, action) => {
   switch (action.type) {
+    //   add the user
     case 'ADD_USER': {
       const { id, data } = action.payload;
       return {
@@ -18,6 +20,7 @@ const userReducers = (state = initialData, action) => {
       };
     }
 
+    // delete the user
     case 'DELETE_USER': {
       const newUser = state.users.filter((user) => user.id !== action.id);
       return {
@@ -26,6 +29,7 @@ const userReducers = (state = initialData, action) => {
       };
     }
 
+    // update the user
     case 'UPDATE_USER': {
       const { id, updatedUser } = action.payload;
       const editUser = state.users.map((user) =>
@@ -37,6 +41,7 @@ const userReducers = (state = initialData, action) => {
       };
     }
 
+    // default handles
     default:
       return state;
   }

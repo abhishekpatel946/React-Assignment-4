@@ -5,8 +5,6 @@ import { useSelector } from 'react-redux';
 const UserTable = (props) => {
   const users = useSelector((state) => state.userReducers.users);
 
-  users.map((user) => console.log(user.data));
-
   return (
     <table>
       <thead>

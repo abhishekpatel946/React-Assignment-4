@@ -20,9 +20,8 @@ const Home = () => {
   // Setting state
   const [currentUser, setCurrentUser] = useState(initialFormState);
   const [editing, setEditing] = useState(false);
-
   const dispatch = useDispatch();
-  const usersList = useSelector((state) => state.userReducers.users);
+  const data = useSelector((state) => state.userReducers.users);
 
   // CRUD operations
   const addNewUser = (user) => {
@@ -32,6 +31,7 @@ const Home = () => {
 
   const deleteOldUser = (id) => {
     dispatch(deleteUser(id));
+    document.getElementById('addUserFormId').reset();
   };
 
   const updateOldUser = (id, updatedUser) => {
@@ -109,7 +109,7 @@ const Home = () => {
           <h2>View users</h2>
           <UserTable
             thead={thead}
-            users={!usersList ? [] : usersList}
+            users={!data ? [] : data}
             editRow={editRow}
             deleteOldUser={deleteOldUser}
           />

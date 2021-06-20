@@ -20,8 +20,8 @@ export function getFromLocalStorage() {
 // set the data into localStorage
 export function setIntoLocalStorage(arrayData) {
   const data = localStorage.getItem(keyName);
-  Object.keys(data).forEach((k) => data[k] == null && delete data[k]);
   if (data && data.length > 0) {
+    Object.keys(data).forEach((k) => data[k] == null && delete data[k]);
     const prevData = JSON.parse(data);
     prevData.push(arrayData);
     return localStorage.setItem(
