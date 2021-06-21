@@ -31,8 +31,6 @@ As you did yesterday, raise a PR and get it reviewed.
 
 ### Pending Task
 ```
-- Add localStorage with redux dispatching
-- Remove unnescessary states, directly used from redux.
 ```
 
 ### File Structure
