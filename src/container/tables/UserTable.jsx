@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { getFromLocalStorage } from '../utils/dataService';
 
 const UserTable = (props) => {
-  const users = useSelector((state) => state.userReducers.users);
+  const users = getFromLocalStorage();
 
   return (
     <table>

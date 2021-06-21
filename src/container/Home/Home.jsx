@@ -3,6 +3,7 @@ import { AddUserForm, EditUserForm } from '../forms';
 import { UserTable } from '../tables';
 import { addUser, deleteUser, updateUser } from '../../redux/actions';
 import { useSelector, useDispatch } from 'react-redux';
+import { setIntoLocalStorage } from '../../container/utils/dataService';
 
 const Home = () => {
   // initial Form State Data
@@ -26,15 +27,18 @@ const Home = () => {
   // CRUD operations
   const addNewUser = (user) => {
     dispatch(addUser(user));
+    setIntoLocalStorage(data);
     document.getElementById('addUserFormId').reset();
   };
 
   const deleteOldUser = (id) => {
     dispatch(deleteUser(id));
+    setIntoLocalStorage(data);
   };
 
   const updateOldUser = (id, updatedUser) => {
     dispatch(updateUser(id, updatedUser));
+    setIntoLocalStorage(data);
     document.getElementById('editUserFormId').reset();
     setEditing(false);
   };
@@ -97,7 +101,6 @@ const Home = () => {
             </div>
           ) : (
             <div>
-              <h2>Add user</h2>
               <AddUserForm
                 addNewUser={addNewUser}
                 genderOptions={genderOptions}
