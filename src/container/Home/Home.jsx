@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AddUserForm, EditUserForm } from '../forms';
 import { UserTable } from '../tables';
 import { addUser, deleteUser, updateUser } from '../../redux/actions';
@@ -24,21 +24,23 @@ const Home = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.userReducers.users);
 
+  // immediatly set data, when change
+  useEffect(() => {
+    setIntoLocalStorage(data);
+  }, [data]);
+
   // CRUD operations
   const addNewUser = (user) => {
     dispatch(addUser(user));
-    setIntoLocalStorage(data);
     document.getElementById('addUserFormId').reset();
   };
 
   const deleteOldUser = (id) => {
     dispatch(deleteUser(id));
-    setIntoLocalStorage(data);
   };
 
   const updateOldUser = (id, updatedUser) => {
     dispatch(updateUser(id, updatedUser));
-    setIntoLocalStorage(data);
     document.getElementById('editUserFormId').reset();
     setEditing(false);
   };
@@ -57,16 +59,6 @@ const Home = () => {
     });
   };
 
-  // Constant table heading
-  const thead = [
-    'Name',
-    'Email',
-    'DoB',
-    'Gender',
-    'Education',
-    'Password',
-    'CPassword',
-  ];
   // Constant Options
   const genderOptions = [
     { id: 'gender', title: 'Male' },
@@ -112,7 +104,6 @@ const Home = () => {
         <div className='flex-large'>
           <h2>View users</h2>
           <UserTable
-            thead={thead}
             users={!data ? [] : data}
             editRow={editRow}
             deleteOldUser={deleteOldUser}

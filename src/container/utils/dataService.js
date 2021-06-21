@@ -28,6 +28,7 @@ export function setIntoLocalStorage(arrayData) {
     // preserve the history
     const prevState = JSON.parse(serialState);
     prevState.push(arrayData);
+
     // set into localStorage
     return localStorage.setItem(
       keyName,

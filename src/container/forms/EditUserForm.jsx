@@ -23,7 +23,7 @@ const EditUserForm = (props) => {
     const { name, value } = event.target;
     setUser({
       ...user,
-      [name]: value,
+      [!name ? 'dob' : name]: value,
     });
   };
 

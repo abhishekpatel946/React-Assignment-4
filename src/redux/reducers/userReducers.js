@@ -1,6 +1,8 @@
+import { getFromLocalStorage } from '../../container/utils/dataService';
+
 // initial data
 const initialData = {
-  users: [],
+  users: getFromLocalStorage(),
 };
 
 const userReducers = (state = initialData, action) => {

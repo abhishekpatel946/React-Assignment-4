@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getFromLocalStorage } from '../utils/dataService';
+import { useSelector } from 'react-redux';
 
 const UserTable = (props) => {
-  const users = getFromLocalStorage();
+  const users = useSelector((state) => state.userReducers.users);
 
   return (
     <table>
@@ -15,7 +15,7 @@ const UserTable = (props) => {
           <th>Gender</th>
           <th>Education</th>
           <th>Password</th>
-          <th>CPassword</th>
+          <th>Confirm Pass</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -57,7 +57,6 @@ const UserTable = (props) => {
 };
 // typechecking with propTypes
 UserTable.propTypes = {
-  thead: PropTypes.array,
   editRow: PropTypes.func,
   deleteOldUser: PropTypes.func,
 };
