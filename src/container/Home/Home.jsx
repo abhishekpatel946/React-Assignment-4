@@ -31,12 +31,12 @@ const Home = () => {
 
   const deleteOldUser = (id) => {
     dispatch(deleteUser(id));
-    document.getElementById('addUserFormId').reset();
   };
 
   const updateOldUser = (id, updatedUser) => {
-    dispatch(updateUser(id, updateUser));
+    dispatch(updateUser(id, updatedUser));
     document.getElementById('editUserFormId').reset();
+    setEditing(false);
   };
 
   const editRow = (user) => {
@@ -88,6 +88,7 @@ const Home = () => {
               <h2>Edit user</h2>
               <EditUserForm
                 editing={editing}
+                setEditing={setEditing}
                 currentUser={currentUser}
                 updateOldUser={updateOldUser}
                 genderOptions={genderOptions}

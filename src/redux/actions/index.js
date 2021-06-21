@@ -20,7 +20,7 @@ export const updateUser = (id, updatedUser) => {
     type: 'UPDATE_USER',
     payload: {
       id: id,
-      updatdUser: updatedUser,
+      updatedUser: updatedUser,
     },
   };
 };

@@ -14,7 +14,7 @@ const userReducers = (state = initialData, action) => {
           ...state.users,
           {
             id: id,
-            data: data,
+            ...data,
           },
         ],
       };
@@ -41,7 +41,7 @@ const userReducers = (state = initialData, action) => {
       };
     }
 
-    // default handles
+    // default handle & return the current state
     default:
       return state;
   }

@@ -23,13 +23,13 @@ const UserTable = (props) => {
         {users && users.length > 0 ? (
           users.map((user) => (
             <tr key={user.id}>
-              <td>{user.data.name}</td>
-              <td>{user.data.email}</td>
-              <td>{user.data.dob}</td>
-              <td>{user.data.gender}</td>
-              <td>{user.data.education}</td>
-              <td>{user.data.password}</td>
-              <td>{user.data.cpassword}</td>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.dob}</td>
+              <td>{user.gender}</td>
+              <td>{user.education}</td>
+              <td>{user.password}</td>
+              <td>{user.cpassword}</td>
               <td>
                 <button
                   onClick={() => {
