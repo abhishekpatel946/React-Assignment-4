@@ -1,0 +1,117 @@
+import React, { useEffect, useState } from 'react';
+import { AddUserForm, EditUserForm } from '../forms';
+import { UserTable } from '../tables';
+import { addUser, deleteUser, updateUser } from '../../redux/actions';
+import { useSelector, useDispatch } from 'react-redux';
+import { setIntoLocalStorage } from '../../container/utils/dataService';
+
+const Home = () => {
+  // initial Form State Data
+  const initialFormState = {
+    id: null,
+    name: '',
+    email: '',
+    dob: '',
+    gender: '',
+    education: '',
+    password: '',
+    cpassword: '',
+  };
+
+  // Setting state
+  const [currentUser, setCurrentUser] = useState(initialFormState);
+  const [editing, setEditing] = useState(false);
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.userReducers.users);
+
+  // immediatly set data, when change
+  useEffect(() => {
+    setIntoLocalStorage(data);
+  }, [data]);
+
+  // CRUD operations
+  const addNewUser = (user) => {
+    dispatch(addUser(user));
+    document.getElementById('addUserFormId').reset();
+  };
+
+  const deleteOldUser = (id) => {
+    dispatch(deleteUser(id));
+  };
+
+  const updateOldUser = (id, updatedUser) => {
+    dispatch(updateUser(id, updatedUser));
+    document.getElementById('editUserFormId').reset();
+    setEditing(false);
+  };
+
+  const editRow = (user) => {
+    setEditing(true);
+    setCurrentUser({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      dob: user.dob,
+      gender: user.gender,
+      education: user.education,
+      password: user.password,
+      cpassword: user.cpassword,
+    });
+  };
+
+  // Constant Options
+  const genderOptions = [
+    { id: 'gender', title: 'Male' },
+    { id: 'gender', title: 'Female' },
+    { id: 'gender', title: 'Other' },
+  ];
+  const educationOption = [
+    { className: 'options-select-option', grade: 'Choose Grade' },
+    { className: 'options-select-option', grade: '10th Grade' },
+    { className: 'options-select-option', grade: '12th Grade' },
+    { className: 'options-select-option', grade: "Bachelor's Degree" },
+    { className: 'options-select-option', grade: "Master's Degree" },
+    { className: 'options-select-option', grade: 'Doctoral Degree' },
+  ];
+
+  return (
+    <div className='container'>
+      <h1>CRUD App with Form & localStorage</h1>
+      <div className='flex-row'>
+        <div className='flex-large'>
+          {editing ? (
+            <div>
+              <h2>Edit user</h2>
+              <EditUserForm
+                editing={editing}
+                setEditing={setEditing}
+                currentUser={currentUser}
+                updateOldUser={updateOldUser}
+                genderOptions={genderOptions}
+                educationOption={educationOption}
+              />
+            </div>
+          ) : (
+            <div>
+              <AddUserForm
+                addNewUser={addNewUser}
+                genderOptions={genderOptions}
+                educationOption={educationOption}
+              />
+            </div>
+          )}
+        </div>
+        <div className='flex-large'>
+          <h2>View users</h2>
+          <UserTable
+            users={!data ? [] : data}
+            editRow={editRow}
+            deleteOldUser={deleteOldUser}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
