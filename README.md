@@ -37,20 +37,43 @@ As you did yesterday, raise a PR and get it reviewed.
 
 ### File Structure
 ```
-src
-    -container
-       - Home
-         - Home.jsx
-       - Form
-         - components
-           - Input.jsx
-           - DoB.jsx
-           - Radio.jsx
-           - Select.jsx
-         - EditUserForm.jsx
-         - AddUserForm.jsx
-       - Table
-         - Table.jsx
-       - Utils
-         - dataService.js
+.
+├── package.json
+├── package-lock.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+├── README.md
+└── src
+    ├── App.jsx
+    ├── container
+    │   ├── forms
+    │   │   ├── AddUserForm.jsx
+    │   │   ├── EditUserForm.jsx
+    │   │   ├── form-components
+    │   │   │   ├── DatePicker.jsx
+    │   │   │   ├── index.js
+    │   │   │   ├── InputText.jsx
+    │   │   │   ├── RadioBtn.jsx
+    │   │   │   └── Select.jsx
+    │   │   └── index.js
+    │   ├── Home
+    │   │   ├── Home.jsx
+    │   │   └── index.js
+    │   ├── tables
+    │   │   ├── index.js
+    │   │   └── UserTable.jsx
+    │   └── utils
+    │       └── dataService.js
+    ├── index.css
+    ├── index.js
+    └── redux
+        ├── actions
+        │   └── index.js
+        ├── reducers
+        │   ├── index.js
+        │   └── userReducers.js
+        └── store
+            └── store.js
 ```
